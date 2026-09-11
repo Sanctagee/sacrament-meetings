@@ -15,7 +15,7 @@ const meetings: SacramentMeeting[] = [
     speakers: [],
     closingHymn: { number: 89, title: 'Master, the Tempest Is Raging' },
     closingPrayer: 'Brother Justice',
-    announcements: ['Fast and testimony meeting — no assigned speakers', 'Temple recommend interviews available after church'],
+    announcements: ['Fast and testimony meeting – no assigned speakers', 'Temple recommend interviews available after church'],
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ const meetings: SacramentMeeting[] = [
     ],
     closingHymn: { number: 301, title: 'Love at Home' },
     closingPrayer: 'Brother Emmanuel',
-    announcements: ['YSA Summit preparation meeting — this Wednesday'],
+    announcements: ['YSA Summit preparation meeting – this Wednesday'],
   },
   {
     id: 5,
@@ -106,7 +106,7 @@ const meetings: SacramentMeeting[] = [
     speakers: [],
     closingHymn: { number: 89, title: 'Master, the Tempest Is Raging' },
     closingPrayer: 'Sister Inyang',
-    announcements: ['Fast and testimony meeting — no assigned speakers'],
+    announcements: ['Fast and testimony meeting – no assigned speakers'],
   },
   {
     id: 7,
@@ -142,7 +142,7 @@ const meetings: SacramentMeeting[] = [
     ],
     closingHymn: { number: 219, title: 'God Be with You Till We Meet Again' },
     closingPrayer: 'Brother Justice',
-    announcements: ['YSA Summit this weekend — carpool sign-up at the front table'],
+    announcements: ['YSA Summit this weekend – carpool sign-up at the front table'],
   },
   {
     id: 9,
@@ -161,7 +161,7 @@ const meetings: SacramentMeeting[] = [
     ],
     closingHymn: { number: 227, title: 'Now Let Us Rejoice' },
     closingPrayer: 'Sister Inyang',
-    announcements: ['Combined stake conference session — no local sacrament meeting this week'],
+    announcements: ['Combined stake conference session – no local sacrament meeting this week'],
   },
   {
     id: 10,
@@ -177,7 +177,7 @@ const meetings: SacramentMeeting[] = [
     speakers: [],
     closingHymn: { number: 227, title: 'Now Let Us Rejoice' },
     closingPrayer: 'Sister Ugochukwu',
-    announcements: ['General Conference weekend — watch from home or the stake center broadcast'],
+    announcements: ['General Conference weekend – watch from home or the stake center broadcast'],
   },
 ];
 

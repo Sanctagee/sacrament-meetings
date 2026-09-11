@@ -43,7 +43,7 @@ export default function NavLinks() {
         aria-label="Open navigation menu"
         aria-expanded={open}
         aria-controls="mobile-nav"
-        className="sm:hidden flex flex-col gap-1.5 p-2"
+        className="sm:hidden cursor-pointer flex flex-col gap-1.5 p-2"
       >
         <span className="w-6 h-0.5 bg-white" />
         <span className="w-6 h-0.5 bg-white" />
@@ -70,7 +70,7 @@ export default function NavLinks() {
           <button
             onClick={() => setOpen(false)}
             aria-label="Close navigation menu"
-            className="text-white text-2xl leading-none"
+            className="cursor-pointer text-white text-2xl leading-none"
           >
             &times;
           </button>
