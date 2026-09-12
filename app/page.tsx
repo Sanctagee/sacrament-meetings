@@ -6,13 +6,14 @@ export default function Home() {
     <main>
       <section className="relative h-105 sm:h-125 w-full">
         <Image
-        src="/hero.jpg"
-        alt="A quiet chapel interior before a sacrament meeting"
-        fill
-        priority
-        fetchPriority="high"
-        className="object-cover"
-      />
+          src="/hero.jpg"
+          alt="A quiet chapel interior before a sacrament meeting"
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-4 sm:px-6">
           <h1 className="text-2xl sm:text-5xl font-heading font-bold text-white mb-3 sm:mb-4">
             Sacrament Meeting Planner
@@ -40,19 +41,19 @@ export default function Home() {
 
       <section className="container mx-auto px-4 py-16 grid gap-8 sm:grid-cols-3 text-center">
         <div>
-          <h3 className="font-heading font-semibold text-xl mb-2 text-stone-800">Plan Ahead</h3>
+          <h2 className="font-heading font-semibold text-xl mb-2 text-stone-800">Plan Ahead</h2>
           <p className="text-stone-600 text-sm">
             Organize hymns, speakers, and ward business for every upcoming Sunday.
           </p>
         </div>
         <div>
-          <h3 className="font-heading font-semibold text-xl mb-2 text-stone-800">View Anytime</h3>
+          <h2 className="font-heading font-semibold text-xl mb-2 text-stone-800">View Anytime</h2>
           <p className="text-stone-600 text-sm">
             Members can look up this week&apos;s program or browse past meetings.
           </p>
         </div>
         <div>
-          <h3 className="font-heading font-semibold text-xl mb-2 text-stone-800">Print &amp; Share</h3>
+          <h2 className="font-heading font-semibold text-xl mb-2 text-stone-800">Print &amp; Share</h2>
           <p className="text-stone-600 text-sm">
             Every meeting program can be printed cleanly for handouts or personal reference.
           </p>

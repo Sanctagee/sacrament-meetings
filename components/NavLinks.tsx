@@ -69,6 +69,7 @@ export default function NavLinks() {
         <div className="flex justify-end p-4">
           <button
             onClick={() => setOpen(false)}
+            tabIndex={open ? 0 : -1}
             aria-label="Close navigation menu"
             className="cursor-pointer text-white text-2xl leading-none"
           >
@@ -83,6 +84,7 @@ export default function NavLinks() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
+                  tabIndex={open ? 0 : -1}
                   className={`block py-3 text-lg ${
                     isActive
                       ? 'text-amber-400 font-semibold'
