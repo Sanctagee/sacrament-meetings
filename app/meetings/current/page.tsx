@@ -7,7 +7,7 @@ export default function CurrentMeetingPage() {
   const sunday = new Date(today);
   sunday.setDate(today.getDate() - dayOfWeek);
 
-  const isoDate = sunday.toISOString().split('T')[0];
+  const isoDate = `${sunday.getFullYear()}-${String(sunday.getMonth() + 1).padStart(2, '0')}-${String(sunday.getDate()).padStart(2, '0')}`;
   const matches = getMeetings(isoDate);
 
   if (matches.length > 0) {
