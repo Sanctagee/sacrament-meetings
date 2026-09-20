@@ -1,191 +1,55 @@
+import { neon } from '@neondatabase/serverless';
 import type { SacramentMeeting } from './types';
 
-const meetings: SacramentMeeting[] = [
-  {
-    id: 1,
-    date: '2026-08-02',
-    meetingType: 'testimony',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Charles',
-    openingHymn: { number: 19, title: 'We Thank Thee, O God, for a Prophet' },
-    openingPrayer: 'Sister Ugochukwu',
-    wardBusiness: [],
-    stakeBusiness: false,
-    sacramentHymn: { number: 172, title: "'Tis Sweet to Sing the Matchless Love" },
-    speakers: [],
-    closingHymn: { number: 89, title: 'Master, the Tempest Is Raging' },
-    closingPrayer: 'Brother Justice',
-    announcements: ['Fast and testimony meeting – no assigned speakers', 'Temple recommend interviews available after church'],
-  },
-  {
-    id: 2,
-    date: '2026-08-09',
-    meetingType: 'regular',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Charles',
-    openingHymn: { number: 2, title: 'The Spirit of God' },
-    openingPrayer: 'Brother Emmanuel',
-    wardBusiness: [{ description: 'Sustaining of new Primary president' }],
-    stakeBusiness: false,
-    sacramentHymn: { number: 169, title: 'In Remembrance of Thy Suffering' },
-    speakers: [
-      { name: 'Sister Inyang', topic: 'Faith in Jesus Christ', type: 'speaker' },
-      { name: 'Youth Choir', topic: '', type: 'musical-number' },
-    ],
-    closingHymn: { number: 31, title: 'O God, Our Help in Ages Past' },
-    closingPrayer: 'Sister Chiamaka Judith',
-    announcements: ['Ward temple night: August 16'],
-  },
-  {
-    id: 3,
-    date: '2026-08-16',
-    meetingType: 'regular',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Justice',
-    openingHymn: { number: 66, title: 'Rejoice, the Lord Is King!' },
-    openingPrayer: 'Sister Chiamaka Judith',
-    wardBusiness: [{ description: 'Farewell for Elder Abraham, departing to the Ghana Accra Mission' }],
-    stakeBusiness: false,
-    sacramentHymn: { number: 174, title: 'While of These Emblems We Partake' },
-    speakers: [
-      { name: 'Elder Abraham', topic: 'My mission call and preparation', type: 'speaker' },
-      { name: 'Brother Emmanuel', topic: 'Supporting missionaries', type: 'speaker' },
-    ],
-    closingHymn: { number: 219, title: 'God Be with You Till We Meet Again' },
-    closingPrayer: 'Brother Charles',
-  },
-  {
-    id: 4,
-    date: '2026-08-23',
-    meetingType: 'regular',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Charles',
-    openingHymn: { number: 246, title: 'Love One Another' },
-    openingPrayer: 'Sister Ugochukwu',
-    wardBusiness: [{ description: 'Sustaining of new Elders Quorum president' }],
-    stakeBusiness: false,
-    sacramentHymn: { number: 193, title: 'In Humility, Our Savior' },
-    speakers: [
-      { name: 'Brother Justice', topic: 'The Atonement of Jesus Christ', type: 'speaker' },
-      { name: 'Ward Choir', topic: '', type: 'musical-number' },
-      { name: 'Sister Inyang', topic: 'Gratitude and service', type: 'speaker' },
-    ],
-    closingHymn: { number: 301, title: 'Love at Home' },
-    closingPrayer: 'Brother Emmanuel',
-    announcements: ['YSA Summit preparation meeting – this Wednesday'],
-  },
-  {
-    id: 5,
-    date: '2026-08-30',
-    meetingType: 'regular',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Justice',
-    openingHymn: { number: 1, title: 'The Morning Breaks' },
-    openingPrayer: 'Brother Emmanuel',
-    wardBusiness: [],
-    stakeBusiness: false,
-    sacramentHymn: { number: 193, title: 'While of These Emblems We Partake' },
-    speakers: [
-      { name: 'Sister Chiamaka Judith', topic: 'Enduring to the end', type: 'speaker' },
-    ],
-    closingHymn: { number: 227, title: 'Now Let Us Rejoice' },
-    closingPrayer: 'Sister Ugochukwu',
-    announcements: ['Sunday School combined lesson next week for all adult classes'],
-  },
-  {
-    id: 6,
-    date: '2026-09-06',
-    meetingType: 'testimony',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Charles',
-    openingHymn: { number: 19, title: 'We Thank Thee, O God, for a Prophet' },
-    openingPrayer: 'Brother Justice',
-    wardBusiness: [],
-    stakeBusiness: false,
-    sacramentHymn: { number: 172, title: "'Tis Sweet to Sing the Matchless Love" },
-    speakers: [],
-    closingHymn: { number: 89, title: 'Master, the Tempest Is Raging' },
-    closingPrayer: 'Sister Inyang',
-    announcements: ['Fast and testimony meeting – no assigned speakers'],
-  },
-  {
-    id: 7,
-    date: '2026-09-13',
-    meetingType: 'regular',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Justice',
-    openingHymn: { number: 246, title: 'Love One Another' },
-    openingPrayer: 'Sister Inyang',
-    wardBusiness: [{ description: 'Ward temple recommend renewal drive continues through September' }],
-    stakeBusiness: false,
-    sacramentHymn: { number: 169, title: 'In Remembrance of Thy Suffering' },
-    speakers: [
-      { name: 'Brother Emmanuel', topic: 'Preparing to enter the temple', type: 'speaker' },
-      { name: 'Sister Ugochukwu', topic: '', type: 'musical-number' },
-    ],
-    closingHymn: { number: 31, title: 'O God, Our Help in Ages Past' },
-    closingPrayer: 'Brother Charles',
-  },
-  {
-    id: 8,
-    date: '2026-09-20',
-    meetingType: 'regular',
-    presiding: 'Bishop Etim',
-    conducting: 'Brother Charles',
-    openingHymn: { number: 66, title: 'Rejoice, the Lord Is King!' },
-    openingPrayer: 'Sister Chiamaka Judith',
-    wardBusiness: [],
-    stakeBusiness: false,
-    sacramentHymn: { number: 174, title: 'While of These Emblems We Partake' },
-    speakers: [
-      { name: 'Sister Ugochukwu', topic: 'Ministering to one another', type: 'speaker' },
-    ],
-    closingHymn: { number: 219, title: 'God Be with You Till We Meet Again' },
-    closingPrayer: 'Brother Justice',
-    announcements: ['YSA Summit this weekend – carpool sign-up at the front table'],
-  },
-  {
-    id: 9,
-    date: '2026-09-27',
-    meetingType: 'stake',
-    presiding: 'President Paschal',
-    conducting: 'President Paschal',
-    openingHymn: { number: 1, title: 'The Morning Breaks' },
-    openingPrayer: 'Brother Emmanuel',
-    wardBusiness: [],
-    stakeBusiness: true,
-    sacramentHymn: { number: 0, title: '' },
-    speakers: [
-      { name: 'President Paschal', topic: 'Stake conference address', type: 'speaker' },
-      { name: 'Sister Chiamaka Judith', topic: 'Strengthening families', type: 'speaker' },
-    ],
-    closingHymn: { number: 227, title: 'Now Let Us Rejoice' },
-    closingPrayer: 'Sister Inyang',
-    announcements: ['Combined stake conference session – no local sacrament meeting this week'],
-  },
-  {
-    id: 10,
-    date: '2026-10-04',
-    meetingType: 'general',
-    presiding: 'Bishop Etim',
-    conducting: 'Bishop Etim',
-    openingHymn: { number: 1, title: 'The Morning Breaks' },
-    openingPrayer: 'Brother Charles',
-    wardBusiness: [],
-    stakeBusiness: false,
-    sacramentHymn: { number: 0, title: '' },
-    speakers: [],
-    closingHymn: { number: 227, title: 'Now Let Us Rejoice' },
-    closingPrayer: 'Sister Ugochukwu',
-    announcements: ['General Conference weekend – watch from home or the stake center broadcast'],
-  },
-];
+const sql = neon(process.env.DATABASE_URL!);
 
-export function getMeetings(date?: string | null): SacramentMeeting[] {
-  if (date) return meetings.filter((m) => m.date === date);
-  return meetings;
+interface MeetingRow {
+  id: number;
+  date: string;
+  meeting_type: string;
+  presiding: string;
+  conducting: string;
+  announcements: string[] | null;
+  opening_hymn: { number: number; title: string };
+  opening_prayer: string;
+  ward_business: { description: string }[] | null;
+  stake_business: boolean;
+  sacrament_hymn: { number: number; title: string };
+  speakers: { name: string; topic: string; type: 'speaker' | 'musical-number' }[] | null;
+  closing_hymn: { number: number; title: string };
+  closing_prayer: string;
 }
 
-export function getMeetingById(id: number): SacramentMeeting | null {
-  return meetings.find((m) => m.id === id) ?? null;
+function mapRowToMeeting(row: MeetingRow): SacramentMeeting {
+  return {
+    id: row.id,
+    date: row.date,
+    meetingType: row.meeting_type as SacramentMeeting['meetingType'],
+    presiding: row.presiding,
+    conducting: row.conducting,
+    announcements: row.announcements ?? [],
+    openingHymn: row.opening_hymn,
+    openingPrayer: row.opening_prayer,
+    wardBusiness: row.ward_business ?? [],
+    stakeBusiness: row.stake_business,
+    sacramentHymn: row.sacrament_hymn,
+    speakers: row.speakers ?? [],
+    closingHymn: row.closing_hymn,
+    closingPrayer: row.closing_prayer,
+  };
+}
+
+export async function getMeetings(date?: string | null): Promise<SacramentMeeting[]> {
+  if (date) {
+    const rows = (await sql`SELECT * FROM meetings WHERE date = ${date} ORDER BY date`) as MeetingRow[];
+    return rows.map(mapRowToMeeting);
+  }
+  const rows = (await sql`SELECT * FROM meetings ORDER BY date`) as MeetingRow[];
+  return rows.map(mapRowToMeeting);
+}
+
+export async function getMeetingById(id: number): Promise<SacramentMeeting | null> {
+  const rows = (await sql`SELECT * FROM meetings WHERE id = ${id}`) as MeetingRow[];
+  if (rows.length === 0) return null;
+  return mapRowToMeeting(rows[0]);
 }
