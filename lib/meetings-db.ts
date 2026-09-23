@@ -83,3 +83,59 @@ export async function getMeetingsTotalPages(query: string): Promise<number> {
   `) as { count: string }[];
   return Math.ceil(Number(rows[0].count) / ITEMS_PER_PAGE);
 }
+
+
+interface MeetingInput {
+  date: string;
+  meetingType: SacramentMeeting['meetingType'];
+  presiding: string;
+  conducting: string;
+  announcements: string[];
+  openingHymn: { number: number; title: string };
+  openingPrayer: string;
+  stakeBusiness: boolean;
+  sacramentHymn: { number: number; title: string };
+  closingHymn: { number: number; title: string };
+  closingPrayer: string;
+}
+
+export async function createMeeting(data: MeetingInput): Promise<SacramentMeeting> {
+  const rows = (await sql`
+    INSERT INTO meetings (
+      date, meeting_type, presiding, conducting, announcements,
+      opening_hymn, opening_prayer, ward_business, stake_business,
+      sacrament_hymn, speakers, closing_hymn, closing_prayer
+    ) VALUES (
+      ${data.date}, ${data.meetingType}, ${data.presiding}, ${data.conducting}, ${data.announcements},
+      ${JSON.stringify(data.openingHymn)}, ${data.openingPrayer}, '[]', ${data.stakeBusiness},
+      ${JSON.stringify(data.sacramentHymn)}, '[]', ${JSON.stringify(data.closingHymn)}, ${data.closingPrayer}
+    )
+    RETURNING *
+  `) as MeetingRow[];
+  return mapRowToMeeting(rows[0]);
+}
+
+export async function updateMeeting(id: number, data: MeetingInput): Promise<SacramentMeeting | null> {
+  const rows = (await sql`
+    UPDATE meetings SET
+      date = ${data.date},
+      meeting_type = ${data.meetingType},
+      presiding = ${data.presiding},
+      conducting = ${data.conducting},
+      announcements = ${data.announcements},
+      opening_hymn = ${JSON.stringify(data.openingHymn)},
+      opening_prayer = ${data.openingPrayer},
+      stake_business = ${data.stakeBusiness},
+      sacrament_hymn = ${JSON.stringify(data.sacramentHymn)},
+      closing_hymn = ${JSON.stringify(data.closingHymn)},
+      closing_prayer = ${data.closingPrayer}
+    WHERE id = ${id}
+    RETURNING *
+  `) as MeetingRow[];
+  if (rows.length === 0) return null;
+  return mapRowToMeeting(rows[0]);
+}
+
+export async function deleteMeeting(id: number): Promise<void> {
+  await sql`DELETE FROM meetings WHERE id = ${id}`;
+}
