@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Sacrament Meeting Planner',
     url: '/',
+    images: ['/hero.jpg'],
   },
   twitter: {
     card: 'summary',

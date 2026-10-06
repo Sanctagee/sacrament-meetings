@@ -1,0 +1,15 @@
+import LoginForm from '@/components/LoginForm';
+
+export const metadata = {
+  title: 'Log In | Sacrament Meeting Planner',
+  description: 'Sign in to manage the sacrament meeting schedule.',
+};
+
+export default function LoginPage() {
+  return (
+    <main className="container mx-auto px-4 py-16">
+      <h1 className="text-3xl font-bold text-center mb-8">Bishopric Login</h1>
+      <LoginForm />
+    </main>
+  );
+}

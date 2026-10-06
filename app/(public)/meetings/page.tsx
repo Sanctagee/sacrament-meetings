@@ -3,6 +3,11 @@ import MeetingSearch from '@/components/MeetingSearch';
 import Pagination from '@/components/Pagination';
 import { fetchFilteredMeetings, getMeetingsTotalPages } from '@/lib/meetings-db';
 
+export const metadata = {
+  title: 'All Meetings',
+  description: 'Browse upcoming and past sacrament meeting programs, including hymns, speakers, and announcements.',
+};
+
 export const dynamic = 'force-dynamic';
 
 export default async function MeetingsPage(props: {
